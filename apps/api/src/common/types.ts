@@ -1,3 +1,6 @@
+import z from "zod";
+import { createRequestSchema } from "./validators/create-request.validator";
+
 export type DeploymentStatus =
   | "pending"
   | "building"
@@ -94,3 +97,28 @@ export type DeploymentUpdate = Partial<{
   errorMessage: string | null;
   sourceRef: string;
 }>;
+
+export type CreateDeploymentRequest = z.infer<typeof createRequestSchema>;
+
+export type PipelineEnv = {
+  workDir: string;
+  dockerNetwork: string;
+  appPort: number;
+  buildkitHost: string;
+  caddyAdminUrl: string;
+  publicBaseUrl: string;
+  caddyBaseUrl: string;
+};
+
+export type SpawnOptions = {
+  cwd?: string;
+  env?: NodeJS.ProcessEnv;
+  onLine: (stream: LogStream, line: string) => void;
+};
+
+export type GlobalEventName = keyof GlobalEventPayloads;
+
+export type GlobalEventEnvelope<K extends GlobalEventName = GlobalEventName> = {
+  type: K;
+  payload: GlobalEventPayloads[K];
+};
