@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Database from "better-sqlite3";
+
 import type {
   Deployment,
   DeploymentDetail,
@@ -10,15 +11,18 @@ import type {
   DeploymentUpdate,
   LogRow,
   LogStream,
-} from "@app/common/types";
-import { mapDeployment, mapLog } from "@app/utils/db.utils";
+} from "../common/types";
+import { mapDeployment, mapLog } from "../utils/db.utils";
+import { singleton } from "tsyringe";
 
+@singleton()
 export class DeploymentStore {
-  private readonly db: Database.Database;
+  private db!: Database.Database;
+  private readonly storageDir!: string;
 
-  constructor(storageDir: string) {
-    fs.mkdirSync(storageDir, { recursive: true });
+  constructor() {}
 
+  setupDbStore(storageDir: string) {
     const dbPath = path.join(storageDir, "deployments.sqlite");
     this.db = new Database(dbPath);
     this.db.pragma("journal_mode = WAL");
