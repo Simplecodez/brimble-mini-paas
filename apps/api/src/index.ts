@@ -4,4 +4,4 @@ import { App } from "./app";
 
 const app = container.resolve(App);
 
-app.start(Number(process.env.PORT) || 3001);
+app.start();
