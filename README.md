@@ -73,14 +73,6 @@ cd brimble-mini-paas
 sudo docker compose up -d
 ```
 
----
-
-### Run the application
-
-```bash
-npm run dev
-```
-
 > No environment variables required — defaults are preconfigured.
 
 ---
