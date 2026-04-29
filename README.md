@@ -71,6 +71,8 @@ Logs → Server-Sent Events (SSE) → Client
 git clone https://github.com/Simplecodez/brimble-mini-paas.git
 cd brimble-mini-paas
 sudo docker compose up -d
+
+then open http://localhost:8081 to test the app
 ```
 
 > No environment variables required — defaults are preconfigured.
