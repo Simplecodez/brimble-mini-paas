@@ -146,7 +146,7 @@ These trade-offs were made to prioritize **clarity and core functionality**.
 ## 🚀 Future Improvements
 
 * Introduce job queue (BullMQ / Redis or other job queues)
-* Deployment logs history
+* Rollbacks
 * Custom domains & SSL
 * Horizontal scaling
 
